@@ -1,7 +1,9 @@
 @if (count($errors) > 0)
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+    <div class="alert alert-danger" role="alert">
+        <ul style="list-style:none;">
+            @foreach ($errors->all() as $error)
+                <li><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif

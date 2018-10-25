@@ -3,16 +3,29 @@
 @section('content')
 
 <!-- ここにページ毎のコンテンツを書く -->
-    <h1>id = {{ $task->id }} : Task Detail</h1>
+    <h1>【ID:{{ $task->id }}】 Task Detail</h1>
 
-    <p>{{ $task->content }}</p>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th class="warning">ID</th>
+            <td>{{ $task->id }}</td>
+        </tr>
+        <tr>
+            <th class="info">Task</th>
+            <td>{{ $task->content }}</td>
+        </tr>
+        <tr>
+            <th class="success">Status</th>
+            <td>{{ $task->status }}</td>
+        </tr>
+    </table>
     
-    <p>{{ $task->status }}</p>
+    {!! link_to_route('tasks.edit', 'EDIT', ['id' => $task->id], ['class' => 'btn btn-info btn-lg btn-block']) !!}
     
-    {!! link_to_route('tasks.edit', 'This task is edit.', ['id' => $task->id]) !!}
+    <br>
     
     {!! Form::model($task, ['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
-        {!! Form::submit('DELETE') !!}
+        {!! Form::submit('DELETE', ['class' => 'btn btn-danger btn-lg btn-block']) !!}
     {!! Form::close() !!}
 
 @endsection

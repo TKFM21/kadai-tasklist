@@ -4,15 +4,28 @@
 
 <!-- ここにページ毎のコンテンツを書く -->
     <h1>Task List</h1>
-
+    
     @if (count($tasks) > 0)
-        <ul>
-            @foreach ($tasks as $task)
-                <li>{!! link_to_route('tasks.show', $task->id, ['id' => $task->id]) !!} : {{ $task->content }} > {{ $task->status }}</li>
-            @endforeach
-        </ul>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>TASK</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($tasks as $task)
+                    <tr>
+                        <td>{!! link_to_route('tasks.show', $task->id, ['id' => $task->id]) !!}</td>
+                        <td>{{ $task->content }}</td>
+                        <td>{{ $task->status }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     @endif
 
-    {!! link_to_route('tasks.create', 'NEW Task Create!') !!}
+    {!! link_to_route('tasks.create', 'NEW Task Create!', null, ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 
 @endsection
