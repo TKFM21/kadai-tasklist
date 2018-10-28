@@ -27,5 +27,6 @@
     @endif
 
     {!! link_to_route('tasks.create', 'NEW Task Create!', null, ['class' => 'btn btn-primary btn-lg btn-block']) !!}
+    {!! $tasks->render() !!}
 
 @endsection
